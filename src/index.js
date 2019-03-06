@@ -1,13 +1,18 @@
+import 'antd/dist/antd.min.css'
 import './index.css'
-import './plugins/font-awesome'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
 
 import App from './features'
+import { Provider } from './store/provider'
 import * as serviceWorker from './serviceWorker'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(
+  <Provider>
+    <App/>
+  </Provider>,
+  document.getElementById('root'))
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
