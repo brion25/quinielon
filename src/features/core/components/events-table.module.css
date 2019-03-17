@@ -1,0 +1,33 @@
+.team {
+    font-size: 12px;
+    display: flex;
+    margin: 10px 0;
+}
+
+.teamImg {
+    width: 15px;
+    height: 15px;
+    margin: 5px;
+}
+
+.teamName {
+    margin-top: 5px;
+}
+
+.isImageLast {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+.result {
+    min-width: 40px;
+    text-align: center;
+}
+
+.row td {
+    padding: 0 5px !important;
+}
+
+.date {
+    min-width: 100px;
+}

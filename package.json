@@ -9,8 +9,11 @@
     "antd": "^3.13.6",
     "axios": "^0.18.0",
     "lodash": "^4.17.11",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.23",
     "prop-types": "^15.6.2",
     "react": "^16.8.3",
+    "react-country-flag": "^1.0.2",
     "react-dom": "^16.8.3",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.3"

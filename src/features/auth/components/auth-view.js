@@ -3,14 +3,12 @@ import { Form, Icon, Input, Button, Row, Col, Layout } from 'antd'
 
 import * as styles from './auth-view.module.css'
 import { authUser } from '../service'
-import { StateContext } from '../../../store/provider'
-import { AUTH_USER } from '../../../store/reducer'
+import { connect } from '../../../store/provider'
 
 const { Content } = Layout
 
-const AuthView = (props) => {
-  const { getFieldDecorator } = props.form
-  const { dispatch } = React.useContext(StateContext)
+const AuthView = ({authUser, form}) => {
+  const { getFieldDecorator } = form
   const [ username, setUsername ] = React.useState('')
   const [ password, setPassword ] = React.useState('')
   const [ loading, setLoading ] = React.useState(false)
@@ -33,13 +31,7 @@ const AuthView = (props) => {
 
   const onSubmit = e => {
     e.preventDefault()
-    authUser({username, password}).then(token => {
-      setLoading(false)
-      dispatch({
-        type: AUTH_USER,
-        token
-      })
-    })
+    authUser({username, password})
   }
 
   return (
@@ -80,4 +72,8 @@ const AuthView = (props) => {
   )
 }
 
-export default Form.create({name: 'quinielon-form'})(AuthView)
+const mapDispatchToProps = {
+  authUser
+}
+
+export default Form.create({name: 'quinielon-form'})(connect(null, mapDispatchToProps)(AuthView))

@@ -1,19 +1,17 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Redirect, Route } from 'react-router-dom'
 
+import AuthRoute from './auth/components/auth-route'
 import AuthView from './auth/components/auth-view'
 import Home from './home'
-import { StateContext } from '../store/provider'
+import { connect } from '../store/provider'
 
-const FeaturesRoutes = () => {
-  const { state } = React.useContext(StateContext)
-  console.log(state)
-
+const FeaturesRoutes = ({isAnonymous}) => {
   return (
     <Router>
       <Switch>
         <Route exact path="/" render={() => {
-          if (state.isAnonymous) {
+          if (isAnonymous) {
             return (
               <AuthView/>
             )
@@ -21,10 +19,14 @@ const FeaturesRoutes = () => {
 
           return <Redirect to="/home"/>
         }}/>
-        <Route path="/home" component={Home} />
+        <AuthRoute component={Home} />
       </Switch>
     </Router>
   )
 }
 
-export default FeaturesRoutes
+const mapStateToProps = state => ({
+  isAnonymous: state.isAnonymous,
+})
+
+export default connect(mapStateToProps)(FeaturesRoutes)
