@@ -4,10 +4,10 @@ import _isUndefined from 'lodash/isUndefined'
 import _isEmpty from 'lodash/isEmpty'
 import { Card, Row, Col } from 'antd'
 
-import { connect } from '../../../store/provider'
-import { logoutUser } from '../../auth/service'
-import { getUserQuinielas } from '../service'
-import * as styles from './home-view.module.css'
+import { connect } from '../../../../store/provider'
+import { logoutUser } from '../../../auth/service'
+import { getUserQuinielas } from '../../service'
+import * as styles from './quinielas-view.module.css'
 
 const colSize = {
   xs: 24,
@@ -41,12 +41,14 @@ const renderQuinielas = loading => ({name, matches, id, endDate}, i) => {
   )
 }
 
-const HomeView = ({logoutUser, getUserQuinielas, quinielas}) => {
+const QuinielasView = ({logoutUser, getUserQuinielas, quinielas}) => {
   const [loading, setLoading] = React.useState(true)
 
   React.useEffect(() => {
     if (_isUndefined(quinielas)) {
       getUserQuinielas().then(() => setLoading(false))
+    } else {
+      setLoading(false)
     }
   }, [quinielas])
 
@@ -79,4 +81,4 @@ const mapStateToProps = state => ({
   quinielas: state.quinielas
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeView)
+export default connect(mapStateToProps, mapDispatchToProps)(QuinielasView)

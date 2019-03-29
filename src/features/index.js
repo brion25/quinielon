@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Redirect, Route } from 'react-router-d
 
 import AuthRoute from './auth/components/auth-route'
 import AuthView from './auth/components/auth-view'
-import Home from './home'
+import Quinielas from './quinielas'
 import { connect } from '../store/provider'
 
 const FeaturesRoutes = ({isAnonymous}) => {
@@ -17,9 +17,9 @@ const FeaturesRoutes = ({isAnonymous}) => {
             )
           }
 
-          return <Redirect to="/home"/>
+          return <Redirect to="/quinielas"/>
         }}/>
-        <AuthRoute component={Home} />
+        <AuthRoute path="/quinielas" component={Quinielas} />
       </Switch>
     </Router>
   )

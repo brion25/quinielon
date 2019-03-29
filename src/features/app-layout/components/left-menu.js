@@ -1,9 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Layout, Menu, Avatar, Icon } from 'antd'
 
 import { connect } from '../../../store/provider'
 import { getUserInfo } from '../service'
 import * as styles from './left-menu.module.css'
+import * as quinielasUrls from '../../quinielas/urls'
 
 const { Sider } = Layout
 
@@ -29,12 +31,16 @@ const LeftMenu = ({isAnonymous, getUserInfo}) => {
       <Menu theme="dark" defaultSelectedKeys={['quinilas-menu']} mode="inline">
         <Menu.SubMenu key="quinilas-menu" title={<span><Icon type="folder" /><span>Quinielas</span></span>}>
           <Menu.Item key="quinielas-see">
-            <Icon type="eye" />
-            <span>Ver</span>
+            <Link to={quinielasUrls.action('see')}>
+              <Icon type="eye" />
+              <span>Ver</span>
+            </Link>
           </Menu.Item>
           <Menu.Item key="quinielas-add">
-            <Icon type="plus-circle" />
-            <span>Crear</span>
+            <Link to={quinielasUrls.action('create')}>
+              <Icon type="plus-circle" />
+              <span>Crear</span>
+            </Link>
           </Menu.Item>
         </Menu.SubMenu>
         <Menu.SubMenu key="bets-menu" title={<span><Icon type="dollar" /><span>Apuestas</span></span>}>

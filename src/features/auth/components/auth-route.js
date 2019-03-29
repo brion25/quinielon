@@ -2,9 +2,9 @@ import React from 'react'
 import { Redirect, Route } from 'react-router-dom'
 import { connect } from '../../../store/provider'
 
-const AuthRoute = ({isAnonymous, component: Component}) => {
+const AuthRoute = ({isAnonymous, component: Component, path, exact}) => {
   return (
-    <Route render={() => {
+    <Route exact={exact} path={path} render={(routeProps) => {
       if (isAnonymous) {
         return (
           <Redirect to="/"/>
@@ -12,7 +12,7 @@ const AuthRoute = ({isAnonymous, component: Component}) => {
       }
 
       return (
-        <Component/>
+        <Component {...routeProps}/>
       )
     }}/>
   )

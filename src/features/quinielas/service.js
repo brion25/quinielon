@@ -1,4 +1,4 @@
-import { getUserQuinielasAPI } from './api'
+import { getUserQuinielasAPI, getValidMatchesAPI } from './api'
 
 import { SET_QUINIELAS } from '../../store/reducer'
 
@@ -9,4 +9,8 @@ export const getUserQuinielas = (dispatch) => () => {
       quinielas: Object.keys(quinielas).map(id => ({...quinielas[id], id}))
     })
   })
+}
+
+export const getValidMatches = () => () => {
+  return getValidMatchesAPI()
 }
